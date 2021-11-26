@@ -50,10 +50,10 @@ function Render(strike,spare,Tiro){
     let string = "";
 
     if(strike){
-        string = "█ | ";
+        string = "X | ";
     }
     else if(spare){
-        string = Tiro[1] + " | ◢"
+        string = Tiro[1] + " | /";
     }
     else{
         string = Tiro[1] + " | " + Tiro[2];
@@ -61,18 +61,18 @@ function Render(strike,spare,Tiro){
 
     if(Tiro[3] !== undefined){
         if(Tiro[3] == 10){
-            string = string + " | █";
+            string = string + " | X";
         }
         else if(strike && Tiro[2] == 10){
             if (Tiro[3] == 10){
-                string = string + " █ | █";
+                string = string + " X | X";
             }
             else{
-               string = string + " █ | " + Tiro[3]; 
+               string = string + " X | " + Tiro[3]; 
             } 
         }
         else if (strike && Tiro[2] + Tiro[3] == 10){
-            string = string + Tiro[2] + " | ◢";
+            string = string + Tiro[2] + " | /";
         }
         else{
             string = string + " | " + Tiro[3];
