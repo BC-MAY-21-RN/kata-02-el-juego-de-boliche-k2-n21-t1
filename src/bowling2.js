@@ -11,30 +11,41 @@ for(var i = 0; i < Tiros.length; i++){
     }
 }
 
+function rollBall(){
+    roll = Math.floor(Math.random()*11);
+    return roll
+}
+
+let score //para el constructor de alrato
+function keepScore(scoreNew){
+    score = score + scoreNew
+    return score
+}
+
 //Lanza la bola, lo puede hacer dos vecves o hasta tres si es la ultima ronda
 function Shoot(round){
     
-    round[1]= Math.floor(Math.random()*11);
-    var score = round[1];
+    round[1]= rollBall();
+    keepScore(round[1])
     if(10 - round[1] != 0){
-        round[2] = Math.floor(Math.random()* (11 - round[1])) ;
-        score = score+round[2];
+        round[2] = rollBall() - round[1];
+        keepScore(round[2])
         if(round[3] !== undefined && 10 - (round[1]+round[2]) == 0){
-            round[3] = Math.floor(Math.random()*11) ;
-            score = score + round[3];
+            round[3] = rollBall();
+            keepScore(round[3]);
         }
     }
     else{
         if(round[3] !== undefined){
-            round[2] = Math.floor(Math.random() * 11);
-            score = score+round[2];
+            round[2] = rollBall();
+            keepScore(round[2])
             if(10 - round[2] == 0){
-                round[3] = Math.floor(Math.random() * 11);
-                score = score + round[3];
+                round[3] = rollBall();
+                keepScore(round[3])
             }
             else{
-                round[3] = Math.floor(Math.random() * 11 - round[2]);
-                score = score + round[3];
+                round[3] = rollBall() - round[2];
+                keepScore(round[3])
             }
         }
         else{
@@ -43,6 +54,19 @@ function Shoot(round){
     }
     round[0] = score;
     return round;
+}
+
+function validation(strike,spare,Tiro){
+    let string = "";
+    if(strike){
+        string = "X | ";
+    }
+    else if(spare){
+        string = Tiro[1] + " | /";
+    }
+    else{
+        string = Tiro[1] + " | " + Tiro[2];
+    }
 }
 
 //Saca resultados a consola
@@ -78,10 +102,8 @@ function Render(strike,spare,Tiro){
             string = string + " | " + Tiro[3];
         }
     }
-
     console.warn(string);
     console.warn("Score: " + Tiro[0]);
-    
 }
 
 //La funcion principal, mantiene el juego vivo
