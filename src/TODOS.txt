@@ -1,4 +1,5 @@
 //Fix undefined on some turns
+//make scoreSum method (using the third element from the arrays)
 //Make the main file a class
 //Create a main.js file
 //Jest tests
