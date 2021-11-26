@@ -21,7 +21,7 @@
   - Utilizar estilo de código definido por la comunidad (apoyarse en ESLint)
   - Puntuación **A** obtenida en CodeClimate
   - Incluir pruebas unitarias(Jest)
-- Desempeño y escalabilidad
+- Desempeño y escalabilidad 
   - Puede ejecutarse desde la linea de comandos y mostrar la salida en consola
 - Código fuente
   - Orientado a Objetos
