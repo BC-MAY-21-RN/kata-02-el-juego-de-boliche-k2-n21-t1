@@ -1,6 +1,6 @@
 
 let game = []
-let round = []
+let round = [] //priner y segundo tiro, y el score
 
 //Generates random number of pins knocked down
 ballRoll = () => {
@@ -12,14 +12,18 @@ ballRoll = () => {
 turnValidation = (roundRoll) => {
     let firstRoll = roundRoll[0]
     let secondRoll = roundRoll[1]
-    let leftOver = Math.abs(roundRoll[0] - 10);
+    let leftOver = Math.abs(roundRoll[0] - 10); //los pinos que quedaron de la primera tirada
     let isOf = firstRoll + secondRoll
 
+    if (secondRoll <= (10-firstRoll)){
+
+    }
+
     if (firstRoll == 10) { //Strike
-        roundRoll = ["X", "", 10]
+        roundRoll = ["█", "", 10]
         return roundRoll
     } else if (secondRoll == leftOver) { //Spare
-        roundRoll = [firstRoll, "/", 10]
+        roundRoll = [firstRoll, "◢", 10]
         return roundRoll
     } else if (isOf != 10 && secondRoll <= leftOver) { //Open Frrame
         roundRoll = [firstRoll, secondRoll, isOf]
